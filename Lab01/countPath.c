@@ -11,5 +11,6 @@ int countPaths(int i, int j, int D, int C){
 
 int main()
 {
-	printf("%d", countPaths(2,3,4,4));
+	printf("%d kmkmkmkmkmk", countPaths(2,3,4,4));
 }
+gfy
