@@ -5,7 +5,7 @@ public class QuadraticEquation {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter the value of a: ");
-        double a = scanner.nextDouble();1
+        double a = scanner.nextDouble();
         System.out.print("Enter the value of b: ");
         double b = scanner.nextDouble();
         System.out.print("Enter the value of c: ");
