@@ -74,10 +74,5 @@ public class DigitalVideoDisc {
 		this.category = category;
 		this.cost = cost;
 	}
-	//constructor by title
-	public DigitalVideoDisc(String title) {
-		super();
-		this.title = title;
-	}
 	
 }
