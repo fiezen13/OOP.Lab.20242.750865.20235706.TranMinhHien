@@ -34,4 +34,4 @@ Kết quả: Tiêu đề của jungleDVD thành "Cinderella".
 
 dvd = new DigitalVideoDisc(oldTitle):
 
-Không ảnh hưởng đến jungleDVD gốc, vì chỉ gán lại bản sao tham chiếu dvd
+Không ảnh hưởng đến jungleDVD gốc, vì chỉ gán lại bản sao tham chiếu dvd.
