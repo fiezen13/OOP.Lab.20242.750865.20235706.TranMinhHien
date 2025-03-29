@@ -1,0 +1,37 @@
+15.1: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two 
+objects still remain? 
+
+Trong Java, mọi tham số khi truyền vào phương thức đều là truyền giá trị (pass-by-value). Nhưng với đối tượng (object), giá trị được truyền vào là bản sao của tham chiếu (reference), chứ không phải bản thân đối tượng.
+
+=> Nghĩa là: khi bạn gọi swap(jungleDVD, cinderellaDVD), bạn đang truyền bản sao của hai tham chiếu vào hàm swap.
+
+	Cụ thể:
+Biến jungleDVD trỏ đến đối tượng DVD với tiêu đề "Jungle".
+
+Biến cinderellaDVD trỏ đến đối tượng DVD với tiêu đề "Cinderella".
+	Do đó:
+
+jungleDVD bên ngoài vẫn trỏ đến "Jungle"
+
+cinderellaDVD bên ngoài vẫn trỏ đến "Cinderella"
+
+Khi truyền vào swap(jungleDVD, cinderellaDVD), hàm swap(Object o1, Object o2) nhận được bản sao của hai tham chiếu đó.
+
+15.2: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is 
+the title of the JungleDVD changed? 
+
+Nguyên nhân:
+
+Mặc dù Java truyền bản sao tham chiếu, nhưng bản sao này vẫn trỏ đến cùng đối tượng với biến gốc.
+
+Do đó, nếu thay đổi thuộc tính của đối tượng (ví dụ: setTitle), thay đổi này sẽ ảnh hưởng đến đối tượng gốc.
+
+vd.setTitle(title):
+
+Thay đổi trực tiếp thuộc tính của đối tượng mà jungleDVD đang trỏ đến.
+
+Kết quả: Tiêu đề của jungleDVD thành "Cinderella".
+
+dvd = new DigitalVideoDisc(oldTitle):
+
+Không ảnh hưởng đến jungleDVD gốc, vì chỉ gán lại bản sao tham chiếu dvd
