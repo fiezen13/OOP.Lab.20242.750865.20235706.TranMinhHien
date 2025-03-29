@@ -7,6 +7,12 @@ public class DigitalVideoDisc {
 	private int length;
 	private float cost;
 	
+	// Class variable to track total DVDs created
+    private static int nbDigitalVideoDiscs = 0;
+    
+    // Instance variable for unique ID
+    private int id;
+	
 	//setter & getter method
 	public String getTitle() {
 		return title;
@@ -24,6 +30,23 @@ public class DigitalVideoDisc {
 		return length;
 	}
 	
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public void setLength(int length) {
+		this.length = length;
+	}
+	public void setCost(float cost) {
+		this.cost = cost;
+	}
+	
 	//constructor full attributes
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
@@ -32,6 +55,9 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 		this.director = director;
 		this.length = length;
+		// Increment the class variable and assign ID
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
 	}
 	//constructor 4 attributes
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
