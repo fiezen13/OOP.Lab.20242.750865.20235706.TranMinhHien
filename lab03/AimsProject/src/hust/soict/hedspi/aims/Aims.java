@@ -1,4 +1,6 @@
-package dvdStore;
+package hust.soict.hedspi.aims;
+import hust.soict.hedspi.aims.cart.*;
+import hust.soict.hedspi.aims.disc.*;
 
 public class Aims {
 
@@ -40,3 +42,4 @@ public class Aims {
 		}
 	}
 }
+

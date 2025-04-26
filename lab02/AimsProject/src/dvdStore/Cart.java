@@ -20,6 +20,20 @@ public class Cart {
 	public void setQtyOrdered(int qtyOrdered) {
 		this.qtyOrdered = qtyOrdered;
 	}
+	
+	public void print() {
+		if(itemsOrdered.length == 0) {
+			System.out.println("The cart is empty!");
+		} else {
+			int i = 0;
+			for(DigitalVideoDisc item : itemsOrdered) {
+				if(item != null) {
+					System.out.printf("%d: %s\n", (i+1), item.toString());
+					i++;
+				}
+			}
+		}
+	}
 
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
         if (qtyOrdered >= MAX_NUMBERS_ORDERED) {

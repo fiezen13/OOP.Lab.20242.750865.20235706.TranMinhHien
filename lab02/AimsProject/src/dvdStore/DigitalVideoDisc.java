@@ -12,6 +12,11 @@ public class DigitalVideoDisc {
     
     // Instance variable for unique ID
     private int id;
+    
+    public String toString() {
+    	String str = "DVD - " + title +"- "+category+"- "+director +"- "+ length+": "+cost+"$";
+    	return str;
+    }
 	
 	//setter & getter method
 	public String getTitle() {
@@ -45,6 +50,10 @@ public class DigitalVideoDisc {
 	}
 	public void setCost(float cost) {
 		this.cost = cost;
+	}
+	
+	public DigitalVideoDisc(String title) {
+		this.title = title;
 	}
 	
 	//constructor full attributes
