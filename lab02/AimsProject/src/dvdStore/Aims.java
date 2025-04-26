@@ -21,6 +21,7 @@ public class Aims {
         );
         
         printCartItems(anOrder);
+        anOrder.print();
 	}
 	
 	public static void printCartItems(Cart c) {
