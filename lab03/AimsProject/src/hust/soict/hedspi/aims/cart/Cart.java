@@ -6,7 +6,11 @@ import java.util.ArrayList;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private ArrayList<Media> itemsOrdered = new ArrayList<>();
+    private ArrayList<Media> itemsOrdered;
+
+    public Cart() {
+        itemsOrdered = new ArrayList<>(); 
+    }
 
     // Updated print method
     public void print() {
