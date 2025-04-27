@@ -6,7 +6,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
     @Override
     public String toString() {
-        return getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + " - " + getCost() + " $";
+        return "DVD - " + getTitle() + " - " + getCategory() + " - Director: " + getDirector() + " - Length: " + getLength() + " mins - " + getCost() + " $";
     }
 
     // Constructor with title only

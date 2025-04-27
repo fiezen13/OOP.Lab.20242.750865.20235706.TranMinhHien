@@ -1,0 +1,76 @@
+14.
+Trong chương trình, các lớp Cart và CompactDisc là các aggregate:
+Cart chứa một danh sách các đối tượng Media (bao gồm DigitalVideoDisc, Book, CompactDisc).
+CompactDisc chứa một danh sách các đối tượng Track.
+
+15.If the passing object is not an instance of Media, what happens? 
+
+Nếu một đối tượng không thuộc kiểu Media (hoặc Track trong trường hợp đó), phương thức equals() trả về false. Điều này đảm bảo rằng chỉ các đối tượng cùng loại mới được so sánh.
+
+16.
+Kết quả khi chạy chương trình test toString:
+Book{id=101, title='Java Basics', category='Education', cost=10.5, authors=[]}
+DVD - Inception -  - Director:  - Length: 0 mins - 0.0 $
+CD - Top Hits - Music - Artist: null - 15.0 $
+
+Giải thích về Tính Đa Hình (Polymorphism) trong Mã Nguồn
+
+Tính đa hình với phương thức toString():
+
+Phương thức toString() được ghi đè (override) trong mỗi lớp con (Book, DigitalVideoDisc, CompactDisc).
+
+Khi gọi toString() trên một đối tượng Media trong danh sách, phương thức phù hợp với kiểu thực tế của đối tượng sẽ được gọi (không phải dựa trên kiểu tham chiếu).
+
+Dynamic Method Dispatch (Gửi phương thức động):
+
+Tại thời điểm chạy chương trình (runtime), hệ thống sẽ chọn đúng phương thức toString() dựa trên kiểu thực tế của đối tượng (Book, DigitalVideoDisc hoặc CompactDisc), thể hiện tính đa hình.
+
+Ưu điểm:
+
+Cùng một lệnh gọi phương thức (toString()) có thể hoạt động với nhiều loại đối tượng khác nhau, giúp giảm sự phức tạp của mã nguồn.
+
+Dễ dàng mở rộng: Nếu sau này bạn thêm một loại phương tiện mới (ví dụ: AudioBook), bạn chỉ cần cài đặt thêm phương thức toString() cho lớp đó, mà không cần thay đổi code cũ.
+
+
+1. What are the advantages of Polymorphism?
+Polymorphism là một tính năng trong lập trình hướng đối tượng cho phép một phương thức hoặc hành vi có thể hoạt động khác nhau tùy thuộc vào đối tượng cụ thể mà nó đang được gọi.
+Ưu điểm chính của Polymorphism:
+
+a. Tăng tính linh hoạt và khả năng mở rộng :
+Polymorphism cho phép viết mã tổng quát hơn, dễ dàng mở rộng mà không cần thay đổi mã hiện tại.
+Ví dụ: Khi gọi toString() trên danh sách Media, bạn không cần viết mã riêng cho từng loại Book, CompactDisc, hoặc DigitalVideoDisc. Mỗi loại tự định nghĩa hành vi riêng của nó.
+b. Tăng khả năng tái sử dụng mã:
+Bạn có thể sử dụng cùng một phương thức hoặc interface để làm việc với các đối tượng khác nhau.
+Ví dụ: Một danh sách ArrayList<Media> có thể chứa nhiều kiểu Media khác nhau mà không cần thay đổi cấu trúc danh sách.
+c. Dễ bảo trì:
+Nếu cần thay đổi hoặc thêm loại Media mới (như AudioBook), chỉ cần ghi đè các phương thức liên quan trong lớp mới mà không cần thay đổi mã của các lớp khác.
+d. Giảm sự phức tạp :
+Polymorphism giúp giảm logic điều kiện phức tạp (như if-else hoặc switch-case) khi xử lý các loại đối tượng khác nhau.
+
+2. How is Inheritance useful to achieve Polymorphism in Java?
+Inheritance (Kế thừa) là nền tảng để thực hiện Polymorphism trong Java.
+Các cách kế thừa hỗ trợ Polymorphism:
+
+a. Chia sẻ hành vi giữa các lớp con :
+Các lớp con kế thừa từ lớp cha có thể ghi đè (override) các phương thức của lớp cha để định nghĩa hành vi riêng của mình.
+Ví dụ: Lớp Media định nghĩa phương thức toString(), nhưng mỗi lớp con (Book, CompactDisc, DigitalVideoDisc) có thể ghi đè để in thông tin chi tiết phù hợp.
+b. Sử dụng kiểu tham chiếu lớp cha :
+Một biến tham chiếu kiểu lớp cha có thể trỏ đến bất kỳ đối tượng nào thuộc lớp con của nó.
+c. Tính đa hình trong hành vi :
+Java sử dụng cơ chế gọi phương thức động (dynamic method dispatch) để quyết định phương thức nào được gọi tại runtime, dựa trên kiểu thực tế của đối tượng, chứ không phải kiểu tham chiếu.
+
+3. What are the differences between Polymorphism and Inheritance in Java?
+a. Định nghĩa:
+Inheritance: Là cơ chế trong đó một lớp con kế thừa các thuộc tính và phương thức từ lớp cha.
+Polymorphism: Là khả năng của một phương thức hoặc hành vi hoạt động khác nhau tùy thuộc vào đối tượng được gọi.
+b. Mối quan hệ:
+Kế thừa là nền tảng để đạt được Polymorphism. Polymorphism không thể tồn tại nếu không có kế thừa hoặc interface.
+c. Cách hoạt động:
+Inheritance: Tập trung vào việc chia sẻ và tái sử dụng mã từ lớp cha đến lớp con.
+Polymorphism: Tập trung vào việc thay đổi hành vi của phương thức tại runtime tùy thuộc vào kiểu thực tế của đối tượng.
+d. Thời điểm quyết định hành vi:
+Inheritance: Hành vi được quyết định tại compile-time (thời điểm biên dịch).
+Polymorphism: Hành vi được quyết định tại runtime (thời điểm chạy).
+e. Đặc điểm chính:
+Inheritance: Là mối quan hệ "is-a" (con là một loại cha).
+Polymorphism: Là mối quan hệ "many forms" (một phương thức có thể có nhiều hình thức).

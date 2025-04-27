@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.Objects;
+
 public class Track implements Playable {
     private String title;
     private int length;
@@ -22,10 +24,11 @@ public class Track implements Playable {
     // OVerride equals to compare tracks by title and length
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
+        if (this == obj) return true; 
         if (obj == null || getClass() != obj.getClass()) return false;
+
         Track track = (Track) obj;
-        return length == track.length && title.equalsIgnoreCase(track.title);
+        return Objects.equals(title, track.title) && length == track.length; 
     }
 
     //play() method
