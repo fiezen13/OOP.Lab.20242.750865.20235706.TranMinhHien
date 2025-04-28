@@ -74,3 +74,64 @@ Polymorphism: Hành vi được quyết định tại runtime (thời điểm ch
 e. Đặc điểm chính:
 Inheritance: Là mối quan hệ "is-a" (con là một loại cha).
 Polymorphism: Là mối quan hệ "many forms" (một phương thức có thể có nhiều hình thức).
+
+17.
+
+Comparable là một giao diện (interface), được sử dụng để định nghĩa thứ tự sắp xếp tự nhiên cho các đối tượng của một lớp. Khi một lớp triển khai Comparable, nó cần phải override phương thức compareTo() để xác định cách mà các đối tượng của lớp đó được so sánh với nhau.
+
+1. What class should implement the Comparable interface? 
+Lớp nên triển khai Comparable:
+Lớp Media nên triển khai giao diện Comparable vì đây là lớp cha chung cho tất cả các loại media (Book, Disc, CompactDisc, DigitalVideoDisc), và chúng ta muốn định nghĩa quy tắc so sánh chung cho tất cả các loại media.
+Ngoài ra, nếu các lớp con như DigitalVideoDisc có quy tắc so sánh riêng biệt, chúng ta có thể ghi đè phương thức compareTo trong các lớp con.
+
+2. In those classes, how should you implement the compareTo()method to reflect the ordering that we want?
+Mặc định, sắp xếp theo title trước và cost sau: Chúng ta có thể triển khai phương thức compareTo trong lớp Media như sau:
+
+@Override
+public int compareTo(Media other) {
+    // So sánh theo title (alphabet)
+    int titleComparison = this.getTitle().compareToIgnoreCase(other.getTitle());
+    if (titleComparison != 0) {
+        return titleComparison;
+    }
+    // Nếu title giống nhau, so sánh theo cost (tăng dần)
+    return Float.compare(this.getCost(), other.getCost());
+}
+
+3. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+
+Không, không thể có hai quy tắc sắp xếp khác nhau nếu chỉ sử dụng Comparable:
+Giao diện Comparable chỉ cho phép định nghĩa một quy tắc sắp xếp tự nhiên duy nhất thông qua phương thức compareTo.
+Nếu cần hai quy tắc sắp xếp khác nhau (ví dụ: by title → cost và by cost → title), phải sử dụng Comparator thay vì chỉ dựa vào Comparable.
+
+4. Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this? 
+
+Ghi đè phương thức compareTo trong lớp DigitalVideoDisc: Như đã nêu ở trên, có thể ghi đè phương thức compareTo trong lớp DigitalVideoDisc để cung cấp quy tắc sắp xếp riêng.
+
+Đối với các quy tắc sắp xếp khác: Nếu muốn áp dụng nhiều quy tắc sắp xếp khác nhau cho Media hoặc các lớp con của nó, ta nên sử dụng Comparator thay vì chỉ dựa vào Comparable. Ví dụ:
+
+@Override
+    public int compareTo(Media other) {
+        // Nếu đối tượng cần so sánh không phải là DVD, sử dụng quy tắc mặc định trong Media
+        if (!(other instanceof DigitalVideoDisc)) {
+            return super.compareTo(other);
+        }
+
+        // So sánh theo quy tắc riêng của DVD
+        DigitalVideoDisc otherDVD = (DigitalVideoDisc) other;
+
+        // So sánh theo title
+        int titleComparison = this.getTitle().compareToIgnoreCase(otherDVD.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+
+        // Nếu title giống nhau, so sánh theo length (giảm dần)
+        int lengthComparison = Integer.compare(otherDVD.getLength(), this.getLength());
+        if (lengthComparison != 0) {
+            return lengthComparison;
+        }
+
+        // Nếu length giống nhau, so sánh theo cost (tăng dần)
+        return Float.compare(this.getCost(), otherDVD.getCost());
+    }
