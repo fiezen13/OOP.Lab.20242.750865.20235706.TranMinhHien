@@ -1,0 +1,34 @@
+1.3: Compare Swing and AWT elements
+
+a. So sánh các Container cấp cao nhất (Top-level Containers)
+
+Các "Container cấp cao nhất" là những thành phần giao diện không được đặt bên trong thành phần khác, mà là cửa sổ độc lập xuất hiện trên màn hình.
+
+AWT: Các container cấp cao nhất chính là java.awt.Frame (cửa sổ có viền, thanh tiêu đề) và java.awt.Dialog (hộp thoại pop-up). Chúng phụ thuộc vào nền tảng và sử dụng các thành phần giao diện gốc của hệ điều hành.
+
+Swing: Các container cấp cao nhất tương ứng là javax.swing.JFrame và javax.swing.JDialog. Ngoài ra, Swing còn có javax.swing.JApplet và javax.swing.JWindow (một cửa sổ không viền, không thanh tiêu đề, khác với lớp Window trong AWT vốn là lớp cơ sở của Frame và Dialog).
+Chúng được xây dựng dựa trên AWT nhưng hoàn toàn độc lập với nền tảng và được vẽ bởi Java.
+
+Điểm khác biệt: Các lớp trong Swing thường có tiền tố J (JFrame, JDialog,...) và chúng có cấu trúc bên trong phức tạp hơn AWT
+
+b. So sánh tên lớp Thành phần (Component Class Names)
+Hầu hết các tên lớp component trong Swing bắt đầu bằng 'J'. Swing cung cấp một bộ component phong phú và mạnh mẽ hơn AWT, thường có nhiều tính năng và tùy chỉnh hơn.
+AWT: Tên lớp đơn giản, ví dụ: Button, Label, TextField, TextArea,...
+Swing: Các lớp tương ứng (hoặc tương tự) trong Swing thường có tiền tố J: JButton, JLabel, JTextField, JTextArea...
+
+c.So sánh Xử lý sự kiện (Event Handling)
+Điểm chung: cả 2 đều có cùng mô hình xử lý sự kiện.
++Các sự kiện được đại diện bởi các lớp sự kiện (ví dụ: ActionEvent, MouseEvent,..) nằm trong gói java.awt.event.   
++Các đối tượng "lắng nghe" sự kiện (listener) phải thực thi các giao diện listener tương ứng (ví dụ: ActionListener, MouseListener).
++Đăng ký listener cho thành phần phát sinh sự kiện bằng các phương thức add...Listener() (ví dụ: addActionListener, addMouseListener).
+
+d.So sánh giao diện (resulting Appearance)
+AWT:
+
++Giao diện phụ thuộc vào hệ điều hành, nên trông giống hệt với giao diện gốc của OS.
++Hạn chế về tùy biến giao diện (không hỗ trợ theme phức tạp).
+
+Swing:
+
++Giao diện đồ họa được vẽ bởi Java (không phụ thuộc vào OS), nên nhất quán trên mọi nền tảng.
++Hỗ trợ nhiều tính năng đồ họa phong phú.
