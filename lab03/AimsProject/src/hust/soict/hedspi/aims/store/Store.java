@@ -5,8 +5,15 @@ import java.util.ArrayList;
 
 public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<>();
+    
+    public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
 
-    // Method to add a media item to the store
+	public void setItemsInStore(ArrayList<Media> itemsInStore) {
+		this.itemsInStore = itemsInStore;
+	}
+
     public void addMedia(Media media) {
         if (media != null) {
             itemsInStore.add(media);
@@ -16,7 +23,6 @@ public class Store {
         }
     }
 
-    // Method to remove a media item from the store
     public void removeMedia(Media media) {
         if (itemsInStore.contains(media)) {
             itemsInStore.remove(media);
@@ -26,8 +32,8 @@ public class Store {
         }
     }
 
-    // Method to display all media items in the store
     public void displayStore() {
+    	System.out.println("**********************STORE**********************");
         System.out.println("Items currently in the store:");
         if (itemsInStore.isEmpty()) {
             System.out.println("The store is empty.");
@@ -36,5 +42,6 @@ public class Store {
                 System.out.println("- " + media.getId() + ". " + media.getTitle() + " (" + media.getCategory() + ") - " + media.getCost() + "$");
             }
         }
+        System.out.println("**********************STORE**********************");
     }
 }

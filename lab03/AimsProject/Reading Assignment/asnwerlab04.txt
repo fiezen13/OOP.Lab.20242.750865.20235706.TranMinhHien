@@ -32,3 +32,10 @@ Swing:
 
 +Giao diện đồ họa được vẽ bởi Java (không phụ thuộc vào OS), nên nhất quán trên mọi nền tảng.
 +Hỗ trợ nhiều tính năng đồ họa phong phú.
+
+3.1.4 NOTE:
+Media instanceof Playable kiểm tra xem đối tượng media (được truyền vào constructor của MediaStore) có phải là một đối tượng mà lớp của nó đã khai báo là implements Playable hay không.
+
+Không phải tất cả các đối tượng Media đều có chức năng "phát". Ví dụ, một cuốn sách (Book) là một Media nhưng bạn không thể "phát" nó như một đĩa CD hay DVD.
+Bằng cách kiểm tra media instanceof Playable, chương trình đảm bảo rằng nút "Play" chỉ được tạo và hiển thị cho những đối tượng Media thực sự có khả năng phát. 
+Điều này giúp giao diện người dùng trở nên hợp lý và trực quan hơn, tránh hiển thị những nút bấm không có tác dụng cho một số loại media nhất định.
