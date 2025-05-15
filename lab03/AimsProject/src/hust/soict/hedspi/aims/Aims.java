@@ -16,9 +16,9 @@ public class Aims {
         boolean exit = false;
 
         // Khởi tạo một số media mẫu trong store
-        store.add(new Book(1, "Book A", "Fiction", 100));
-        store.add(new DigitalVideoDisc(2, "DVD A", "Movies", "Director A", 120, 150));
-        store.add(new CompactDisc(3, "CD A", "Music", 120, 60, "Director B", "Artist A"));
+        store.add(new Book("Book A", "Fiction", 100));
+        store.add(new DigitalVideoDisc("DVD A", "Movies", "Director A", 120, 150));
+        store.add(new CompactDisc("CD A", "Music", "Director B",120,  "Artist A", 60));
 
         while (!exit) {
             showMenu();
@@ -62,7 +62,7 @@ public class Aims {
         // Hiển thị danh sách các item trong store
         System.out.println("Items in the store:");
         for (Media media : store) {
-            System.out.println(media.getId() + ". " + media.getTitle() + " - " + media.getCost() + "$");
+            System.out.println(media.getTitle() + " - " + media.getCost() + "$");
         }
 
         // Hiển thị menu trong store
@@ -107,13 +107,13 @@ public class Aims {
     }
 
     public static void seeMediaDetails(Scanner scanner) {
-        System.out.print("Enter the ID of the media: ");
-        int id = scanner.nextInt();
+        System.out.print("Enter the Title of the media: ");
+        String title = scanner.nextLine();
         scanner.nextLine();
 
         Media foundMedia = null;
         for (Media media : store) {
-            if (media.getId() == id) {
+            if (media.getTitle().equals(title)) {
                 foundMedia = media;
                 break;
             }
@@ -168,7 +168,6 @@ public class Aims {
 
     public static void displayMediaDetails(Media media) {
         System.out.println("Media details:");
-        System.out.println("ID: " + media.getId());
         System.out.println("Title: " + media.getTitle());
         System.out.println("Category: " + media.getCategory());
         System.out.println("Cost: " + media.getCost() + "$");
@@ -194,13 +193,13 @@ public class Aims {
     }
 
     public static void addMediaToCart(Scanner scanner) {
-        System.out.print("Enter the ID of the media to add to the cart: ");
-        int id = scanner.nextInt();
+        System.out.print("Enter the title of the media to add to the cart: ");
+        String title = scanner.nextLine();
         scanner.nextLine();
 
         Media foundMedia = null;
         for (Media media : store) {
-            if (media.getId() == id) {
+            if (media.getTitle().equals(title)) {
                 foundMedia = media;
                 break;
             }
@@ -230,7 +229,7 @@ public class Aims {
     public static void seeCart(Scanner scanner) {
         System.out.println("Items in the cart:");
         for (Media media : cart) {
-            System.out.println(media.getId() + ". " + media.getTitle() + " - " + media.getCost() + "$");
+            System.out.println(media.getTitle() + " - " + media.getCost() + "$");
         }
 
         boolean back = false;
@@ -289,7 +288,7 @@ public class Aims {
         switch (choice) {
             case 1:
                 for (Media media : cart) {
-                    System.out.println("ID: " + media.getId() + " - " + media.getTitle());
+                    System.out.println(media.getTitle());
                 }
                 break;
             case 2:
@@ -325,13 +324,13 @@ public class Aims {
     }
 
     public static void removeFromCart(Scanner scanner) {
-        System.out.print("Enter the ID of the media to remove: ");
-        int id = scanner.nextInt();
+        System.out.print("Enter the Title of the media to remove: ");
+        String title = scanner.nextLine();
         scanner.nextLine();
 
         boolean removed = false;
         for (int i = 0; i < cart.size(); i++) {
-            if (cart.get(i).getId() == id) {
+            if (cart.get(i).getTitle().equals(title)) {
                 cart.remove(i);
                 removed = true;
                 break;
@@ -346,13 +345,13 @@ public class Aims {
     }
 
     public static void playMedia(Scanner scanner) {
-        System.out.print("Enter the ID of the media to play: ");
-        int id = scanner.nextInt();
+        System.out.print("Enter the name of the media to play: ");
+        String name = scanner.nextLine();
         scanner.nextLine();
 
         Media foundMedia = null;
         for (Media media : cart) {
-            if (media.getId() == id) {
+            if (media.getTitle().equals(name)) {
                 foundMedia = media;
                 break;
             }

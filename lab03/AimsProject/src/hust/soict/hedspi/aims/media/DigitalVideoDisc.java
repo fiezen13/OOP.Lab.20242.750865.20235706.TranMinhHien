@@ -2,23 +2,21 @@ package hust.soict.hedspi.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
     // Class variable to track total DVDs created
-    private static int nbDigitalVideoDiscs = 0;
+    
 
     @Override
     public String toString() {
-        return "DVD - " + getTitle() + " - " + getCategory() + " - Director: " + getDirector() + " - Length: " + getLength() + " mins - " + getCost() + " $";
+        return "DVD: " + getTitle() + " - Category: " + getCategory() + " - Director: " + getDirector() + " - Length: " + getLength() + " mins - Cost: " + getCost() + " $";
     }
 
     // Constructor with title only
-    public DigitalVideoDisc(int id, String title) {
-        super(id, title, "", 0.0f, 0, ""); // Call Disc constructor
-        nbDigitalVideoDiscs++;
+    public DigitalVideoDisc(String title) {
+        super(title, "", 0.0f, 0, ""); 
     }
 
     // Constructor with full attributes
-    public DigitalVideoDisc(int id, String title, String category, String director, int length, float cost) {
-        super(id, title, category, cost, length, director); // Call Disc constructor
-        nbDigitalVideoDiscs++;
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+        super(title, category, cost, length, director); // Call Disc constructor
     }
 
     // Implement play() method

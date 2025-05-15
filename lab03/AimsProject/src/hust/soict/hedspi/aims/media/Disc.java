@@ -5,8 +5,8 @@ public class Disc extends Media {
     private String director;
 
     // Constructor
-    public Disc(int id, String title, String category, float cost, int length, String director) {
-        super(id, title, category, cost);
+    public Disc(String title, String category, float cost, int length, String director) {
+        super(title, category, cost);
         this.length = length;
         this.director = director;
     }

@@ -6,18 +6,25 @@ import java.util.List;
 public class Book extends Media {
     private List<String> authors = new ArrayList<String>();
     
-    public Book(int id, String title, String category, float cost) {
-        super(id, title, category, cost);
+    public Book(String title, String category, float cost) {
+        super(category, category, cost);
     }
 
     public List<String> getAuthors() {
         return authors;
     }
     
+    public void setAuthors(ArrayList<String> authors) {
+		this.authors = authors;
+	}
+    
+    public Book() {
+    	//To Do
+    };
+    
     @Override
     public String toString() {
         return "Book{" +
-               "id=" + getId() +
                ", title='" + getTitle() + '\'' +
                ", category='" + getCategory() + '\'' +
                ", cost=" + getCost() +

@@ -4,28 +4,20 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public abstract class Media {
-	private int id;
 	private String title;
 	private String category;
 	private float cost;
 	
 	//COnstructor
-	public Media(int id, String title, String category, float cost) {
-		super();
-		this.id = id;
+	public Media(String title, String category, float cost) {
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
 	}
 	
+	public Media() {};
+	
 	// Getters and Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

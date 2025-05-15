@@ -39,7 +39,7 @@ public class Store {
             System.out.println("The store is empty.");
         } else {
             for (Media media : itemsInStore) {
-                System.out.println("- " + media.getId() + ". " + media.getTitle() + " (" + media.getCategory() + ") - " + media.getCost() + "$");
+                System.out.println(media.getTitle() + " (" + media.getCategory() + ") - " + media.getCost() + "$");
             }
         }
         System.out.println("**********************STORE**********************");

@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -35,13 +37,23 @@ public class StoreManagerScreen extends JFrame{
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 		
-		menu.add(new JMenuItem("View store"));
+		JMenuItem viewStoreMenu = new JMenuItem("View Store");
+		menu.add(viewStoreMenu);
+		viewStoreMenu.addActionListener(new btnMenuListener());
 		
 		JMenu smUpdateStore = new JMenu("Update Store");
-		smUpdateStore.add(new JMenuItem("Add Book"));
-		smUpdateStore.add(new JMenuItem("Add CD"));
-		smUpdateStore.add(new JMenuItem("Add DVD"));
+		JMenuItem addBookMenu = new JMenuItem("Add Book");
+		JMenuItem addCDMenu = new JMenuItem("Add CD");
+		JMenuItem addDVDMenu = new JMenuItem("Add DVD");
+		
+		smUpdateStore.add(addBookMenu);
+		smUpdateStore.add(addCDMenu);
+		smUpdateStore.add(addDVDMenu);
 		menu.add(smUpdateStore);
+		
+		addBookMenu.addActionListener(new btnMenuListener());
+		addCDMenu.addActionListener(new btnMenuListener());
+		addDVDMenu.addActionListener(new btnMenuListener());
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -92,6 +104,34 @@ public class StoreManagerScreen extends JFrame{
 		setSize(1024, 768);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	private class btnMenuListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();
+			JFrame S = null;
+			if(command.equals("Add DVD")) {
+				S = new AddDigitalVideoDiscToStoreScreen(store);
+				S.setVisible(true);
+				S.setLocationRelativeTo(null);
+			} else if (command.equals("Add CD")) {
+				S = new AddCompactDiscToStoreScreen(store);
+				S.setVisible(true);
+				S.setLocationRelativeTo(null);
+			} else if (command.equals("Add Book")) {
+				S = new AddBookToStoreScreen(store);
+				S.setVisible(true);
+				S.setLocationRelativeTo(null);
+			} else if (command.equals("View Store")) {
+				S = new StoreManagerScreen(store);
+			}
+			
+			if(S != null) {
+				StoreManagerScreen.this.dispose();
+			}
+		}
 	}
 
 	public static void main(String[] args) {
