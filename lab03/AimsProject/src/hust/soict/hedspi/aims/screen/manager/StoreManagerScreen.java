@@ -129,7 +129,7 @@ public class StoreManagerScreen extends JFrame{
 			}
 			
 			if(S != null) {
-				StoreManagerScreen.this.dispose();
+				StoreManagerScreen.this.dispose();   //tắt chương trình khi ấn nút chuyển đến chức năng khác
 			}
 		}
 	}

@@ -8,9 +8,9 @@ public class StoreTest {
         Store store = new Store();
 
         // Create some DVDs
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc(0, "The Lion King", null, null, 0, 0);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc(1, "Star Wars", null, null, 0, 0);
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc(2, "Aladdin", null, null, 0, 0);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", null, null, 0, 0);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", null, null, 0, 0);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", null, null, 0, 0);
 
         // Add DVDs to the store
         store.addMedia(dvd1);
