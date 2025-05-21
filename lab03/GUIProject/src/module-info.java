@@ -12,5 +12,7 @@ module GUIProject {
 	 requires javafx.web;
 	 requires javafx.swing;
 	 requires javafx.base;
+	 
+	 opens hust.soict.hedspi.javafx to javafx.fxml;
 	 exports hust.soict.hedspi.javafx;
 }
