@@ -1,8 +1,9 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 public class DigitalVideoDisc extends Disc implements Playable {
     // Class variable to track total DVDs created
-    
 
     @Override
     public String toString() {
@@ -21,11 +22,21 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
     // Implement play() method
     @Override
-    public void play() {
-        System.out.println("Playing DVD: " + this.getTitle());
-        System.out.println("DVD length: " + this.getLength());
-    }
+    public StringBuffer play() throws PlayerException {
+        if (this.getLength() > 0) {
+            System.out.println("Playing DVD: " + this.getTitle());
+            System.out.println("DVD length: " + this.getLength());
+            System.out.println("Category: " + this.getCategory()); 
+            System.out.println("Director: " + this.getDirector());
 
+            StringBuffer info = new StringBuffer("");
+            info.append("Playing DVD: " + this.getTitle() + "\n" + "DVD length: " + this.getLength()+ "\n" + "Category: " + this.getCategory() +"\n" + "Cost: " + this.getCost());
+            return info;
+        } else {
+            throw new PlayerException("ERROR: DVD length is non-positive!");
+        }
+    }
+    
     // New method: Để phục vụ cho tìm kiếm
     public boolean isMatch(String title) {
         return getTitle().equalsIgnoreCase(title);

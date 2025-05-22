@@ -1,7 +1,11 @@
 package hust.soict.hedspi.aims.store;
 
 import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<>();
@@ -9,6 +13,12 @@ public class Store {
     public ArrayList<Media> getItemsInStore() {
 		return itemsInStore;
 	}
+    
+    
+    // Phương thức trả về ArrayList (cho xử lý logic tĩnh)
+    public List<Media> getArrayListItems() {
+        return new ArrayList<>(itemsInStore); // Trả về một bản sao để tránh sửa đổi trực tiếp
+    }
 
 	public void setItemsInStore(ArrayList<Media> itemsInStore) {
 		this.itemsInStore = itemsInStore;

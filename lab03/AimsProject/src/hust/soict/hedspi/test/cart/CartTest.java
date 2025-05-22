@@ -1,9 +1,10 @@
 package hust.soict.hedspi.test.cart;
 import hust.soict.hedspi.aims.cart.*;
+import hust.soict.hedspi.aims.exception.LimitExceededException;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class CartTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException {
         // Create a new cart
         Cart cart = new Cart();
 

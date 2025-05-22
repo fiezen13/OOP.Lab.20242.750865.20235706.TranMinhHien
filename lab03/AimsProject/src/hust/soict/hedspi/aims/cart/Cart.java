@@ -1,16 +1,21 @@
 package hust.soict.hedspi.aims.cart;
 
+import hust.soict.hedspi.aims.exception.LimitExceededException;
 import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-public class Cart {
-    public static final int MAX_NUMBERS_ORDERED = 20;
-    private ArrayList<Media> itemsOrdered;
 
-    public Cart() {
-        itemsOrdered = new ArrayList<>(); 
-    }
+
+public class Cart {
+    public static final int MAX_NUMBERS_ORDERED = 500;
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+	
+	public ObservableList<Media> getItemsOrdered(){
+		return FXCollections.observableArrayList(itemsOrdered);
+	}
 
     // Updated print method
     public void print() {
@@ -31,23 +36,26 @@ public class Cart {
     }
 
     // Add a Media to the cart
-    public void addMedia(Media media) {
-        if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
-            System.out.println("The cart is full. Cannot add more items.");
-        } else {
-            itemsOrdered.add(media);
-            System.out.println("The item " + media.getTitle() + " has been added.");
-        }
-    }
+    public int addMedia(Media media) throws LimitExceededException {
+		if (itemsOrdered.size() <  MAX_NUMBERS_ORDERED) {
+			itemsOrdered.add(media);
+			System.out.println("The media has been added to the cart");
+			return 1;
+		} else {
+			throw new LimitExceededException("ERROR: The cart is almost full"); 
+		}
+	}
 
     // Remove a Media from the cart
-    public void removeMedia(Media media) {
-        if (itemsOrdered.remove(media)) {
-            System.out.println("The item " + media.getTitle() + " has been removed.");
-        } else {
-            System.out.println("Item not found in the cart.");
-        }
-    }
+    public int removeMedia(Media media) {
+		if (itemsOrdered.contains(media)) {
+			itemsOrdered.remove(media);
+			System.out.println("The media has been removed from the cart");
+			return 1;
+		}
+		System.out.println("The media is not in the cart");
+		return 0;
+	}
 
     // Calculate total cost
     public float totalCost() {
