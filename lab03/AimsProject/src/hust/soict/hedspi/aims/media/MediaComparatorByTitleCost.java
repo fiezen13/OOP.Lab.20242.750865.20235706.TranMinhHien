@@ -4,13 +4,22 @@ import java.util.Comparator;
 
 public class MediaComparatorByTitleCost implements Comparator<Media> {
     @Override
-    public int compare(Media m1, Media m2) {
-        // So sánh theo title (alphabet)
-        int titleComparison = m1.getTitle().compareToIgnoreCase(m2.getTitle());
-        if (titleComparison != 0) {
-            return titleComparison;
+    public int compare(Media media1, Media media2) {
+        try {
+            int titleDiff = media1.getTitle().compareTo(media2.getTitle());
+            if (titleDiff != 0) {
+                return titleDiff;
+            }
+
+            float costDiff = media1.getCost() - media2.getCost();
+            if (costDiff > 0) {
+                return 1;
+            } else if (costDiff < 0) {
+                return -1;
+            }
+            return 0;
+        } catch (NullPointerException e) {
+            return -1;
         }
-        // Nếu title giống nhau, so sánh theo cost
-        return Double.compare(m2.getCost(), m1.getCost());
     }
 }
